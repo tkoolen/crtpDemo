@@ -10,4 +10,5 @@ Build:
 cmake --build build
 ```
 
-![Travis build status](https://travis-ci.org/tkoolen/crtpDemo.svg?branch=master)
+[![Build Status](https://travis-ci.org/tkoolen/crtpDemo.svg?branch=master)](https://travis-ci.org/tkoolen/crtpDemo)
+
