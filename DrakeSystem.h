@@ -29,10 +29,10 @@ public:
   template<typename DerivedX, typename DerivedU>
   typename DerivedX::PlainObject dynamics(double t, const Eigen::MatrixBase<DerivedX>& x, const Eigen::MatrixBase<DerivedU>& u) const
   {
-    EIGEN_STATIC_ASSERT_VECTOR_AT_COMPILE_TIME(x);
+    EIGEN_STATIC_ASSERT_VECTOR_ONLY(DerivedX)
     assert(x.rows() == num_continuous_states + num_discrete_states);
 
-    EIGEN_STATIC_ASSERT_VECTOR_AT_COMPILE_TIME(u);
+    EIGEN_STATIC_ASSERT_VECTOR_ONLY(DerivedU)
     assert(u.rows() == num_inputs);
 
     return derived.dynamics(t, x, u);
@@ -41,7 +41,7 @@ public:
   template<typename DerivedX>
   Eigen::Matrix<typename DerivedX::Scalar, Eigen::Dynamic, 1> output(const Eigen::MatrixBase<DerivedX>& x) const
   {
-    EIGEN_STATIC_ASSERT_VECTOR_AT_COMPILE_TIME(x);
+    EIGEN_STATIC_ASSERT_VECTOR_ONLY(DerivedX)
     assert(x.rows() == num_continuous_states + num_discrete_states);
 
     return derived.output(x);

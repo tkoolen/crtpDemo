@@ -10,7 +10,8 @@ using namespace Eigen;
 using namespace std;
 
 int main () {
-  Pendulum p;
+  Pendulum p1;
+  DrakeSystem<Pendulum>& p = p1;
 
   // double
   double t = 1.0;
