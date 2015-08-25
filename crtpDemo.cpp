@@ -24,10 +24,12 @@ int main () {
 
   // AutoDiffScalar
   typedef AutoDiffScalar<Vector3d> TaylorVar;
-  Matrix<TaylorVar, 2, 1> x_taylor = x.cast<TaylorVar>();
-  gradientMatrixToAutoDiff(Eigen::Matrix<double, 2, 3>::Identity().eval(), x_taylor);
-  Matrix<TaylorVar, 1, 1> u_taylor = u.cast<TaylorVar>();
-  u_taylor(0).derivatives() << 0.0, 0.0, 1.0;
+  Matrix<TaylorVar, 3, 1> taylorvars;
+  auto x_taylor = taylorvars.head<2>();
+  auto u_taylor = taylorvars.tail<1>();
+  x_taylor = x.cast<TaylorVar>();
+  u_taylor = u.cast<TaylorVar>();
+  gradientMatrixToAutoDiff(Matrix3d::Identity().eval(), taylorvars);
   auto xdot_taylor = p.dynamics(t, x_taylor, u_taylor);
   std::cout << "gradient:\n" << autoDiffToGradientMatrix(xdot_taylor) << std::endl;
 
