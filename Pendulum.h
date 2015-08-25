@@ -2,8 +2,8 @@
 // Created by Twan Koolen on 8/24/15.
 //
 
-#ifndef CRTPDEMO_SUPERBUILD_PENDULUM_H
-#define CRTPDEMO_SUPERBUILD_PENDULUM_H
+#ifndef CRTPDEMO_PENDULUM_H
+#define CRTPDEMO_PENDULUM_H
 
 #include "Manipulator.h"
 
@@ -37,4 +37,4 @@ private:
 };
 
 
-#endif //CRTPDEMO_SUPERBUILD_PENDULUM_H
+#endif //CRTPDEMO_PENDULUM_H

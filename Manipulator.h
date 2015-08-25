@@ -2,8 +2,8 @@
 // Created by Twan Koolen on 8/24/15.
 //
 
-#ifndef CRTPDEMO_SUPERBUILD_MANIPULATOR_H
-#define CRTPDEMO_SUPERBUILD_MANIPULATOR_H
+#ifndef CRTPDEMO_MANIPULATOR_H
+#define CRTPDEMO_MANIPULATOR_H
 
 #include "DrakeSystem.h"
 
@@ -27,4 +27,4 @@ private:
 };
 
 
-#endif //CRTPDEMO_SUPERBUILD_MANIPULATOR_H
+#endif //CRTPDEMO_MANIPULATOR_H
