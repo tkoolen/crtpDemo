@@ -20,9 +20,11 @@ public:
       g(9.81) // m/s^2
   { };
 
-public:
+private:
+  friend class DrakeSystem<Pendulum>;
+
   template<typename DerivedX, typename DerivedU>
-  Eigen::PlainObjectBase <DerivedX> dynamics(double t, const Eigen::MatrixBase <DerivedX>& x, const Eigen::MatrixBase <DerivedU>& u) const
+  Eigen::PlainObjectBase <DerivedX> dynamics_impl(double t, const Eigen::MatrixBase <DerivedX>& x, const Eigen::MatrixBase <DerivedU>& u) const
   {
     typename DerivedX::PlainObject xdot(2, 1);
     xdot(0) = x(1);
