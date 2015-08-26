@@ -6,6 +6,7 @@
 #define CRTPDEMO_PENDULUM_H
 
 #include "Manipulator.h"
+#include <type_traits>
 
 class Pendulum : public Manipulator<Pendulum>
 {
@@ -26,6 +27,10 @@ private:
   template<typename DerivedX, typename DerivedU>
   Eigen::PlainObjectBase <DerivedX> dynamics_impl(double t, const Eigen::MatrixBase <DerivedX>& x, const Eigen::MatrixBase <DerivedU>& u) const
   {
+    // scalar type constraint demo:
+//    static_assert(std::is_floating_point<typename DerivedX::Scalar>::value, "Method only accepts floating point value types");
+//    static_assert(std::is_same<typename DerivedX::Scalar, double>::value, "Method only accepts double");
+
     typename DerivedX::PlainObject xdot(2, 1);
     xdot(0) = x(1);
     xdot(1) = (u(0) - m * g * lc * sin(x(0)) - b * x(1)) / I;
