@@ -3,6 +3,8 @@
 //
 #include <iostream>
 #include "Pendulum.h"
+#include "CoutSystem.h"
+#include "CascadeSystem.h"
 #include <unsupported/Eigen/AutoDiff>
 #include "drakeGradientUtil.h"
 
@@ -32,6 +34,11 @@ int main () {
   gradientMatrixToAutoDiff(Matrix3d::Identity().eval(), taylorvars);
   auto xdot_taylor = p.dynamics(t, x_taylor, u_taylor);
   std::cout << "gradient:\n" << autoDiffToGradientMatrix(xdot_taylor) << std::endl;
+
+  cout << endl << "Cascade system output:" << endl;
+  CoutSystem out(p.getNumOutputs());
+  CascadeSystem<Pendulum, CoutSystem> cascade(p, out);
+  cascade.dynamics(t, x, u);
 
   return 0;
 }

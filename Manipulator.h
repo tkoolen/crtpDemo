@@ -20,11 +20,10 @@ private:
   friend class DrakeSystem<Derived>;
 
   template<typename DerivedX>
-  Eigen::Matrix<typename DerivedX::Scalar, Eigen::Dynamic, 1> output_impl(const Eigen::MatrixBase <DerivedX>& x) const
+  YType<DerivedX> output_impl(const Eigen::MatrixBase <DerivedX>& x) const
   {
     return x;
   }
 };
-
 
 #endif //CRTPDEMO_MANIPULATOR_H

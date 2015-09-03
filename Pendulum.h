@@ -25,7 +25,7 @@ private:
   friend class DrakeSystem<Pendulum>;
 
   template<typename DerivedX, typename DerivedU>
-  Eigen::PlainObjectBase <DerivedX> dynamics_impl(double t, const Eigen::MatrixBase <DerivedX>& x, const Eigen::MatrixBase <DerivedU>& u) const
+  XdotType<DerivedX> dynamics_impl(double t, const Eigen::MatrixBase <DerivedX>& x, const Eigen::MatrixBase <DerivedU>& u) const
   {
     // scalar type constraint demo:
 //    static_assert(std::is_floating_point<typename DerivedX::Scalar>::value, "Method only accepts floating point value types");
