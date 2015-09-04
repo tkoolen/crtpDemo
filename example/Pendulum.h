@@ -5,14 +5,13 @@
 #ifndef CRTPDEMO_PENDULUM_H
 #define CRTPDEMO_PENDULUM_H
 
-#include "Manipulator.h"
-#include <type_traits>
+#include "IntermediateTypeExample.h"
 
-class Pendulum : public Manipulator<Pendulum>
+class Pendulum : public IntermediateTypeExample<Pendulum>
 {
 public:
   Pendulum() :
-      Manipulator<Pendulum>(*this, 2, 0, 1),
+      IntermediateTypeExample<Pendulum>(*this, 2, 0, 1),
       m(1.0), // kg
       l(.5),  // m
       b(0.1), // kg m^2 /s

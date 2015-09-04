@@ -6,9 +6,9 @@
 #define CRTPDEMO_QUADPLANTPENN_H
 
 
-#include "DrakeSystem.h"
-#include "drakeGeometryUtil.h"
-#include "drakeGradientUtil.h"
+#include "systems/DrakeSystem.h"
+#include "util/drakeGeometryUtil.h"
+#include "util/drakeGradientUtil.h"
 #include <unsupported/Eigen/AutoDiff>
 
 class QuadPlantPenn : public DrakeSystem<QuadPlantPenn>

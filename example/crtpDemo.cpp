@@ -6,8 +6,8 @@
 #include "Pendulum.h"
 #include "QuadPlantPenn.h"
 #include "CoutSystem.h"
-#include "CascadeSystem.h"
-#include "DrakeSystemDoubleView.h"
+#include "systems/CascadeSystem.h"
+#include "systems/DrakeSystemDoubleView.h"
 
 using namespace Eigen;
 using namespace std;
@@ -51,7 +51,7 @@ int main () {
   CascadeSystem<QuadPlantPenn, CoutSystem> quad_cascade(quad, quad_out);
   quad_cascade.dynamics(t, x_quad, u_quad);
 
-  // call both systems by iterating over vector of function pointers
+  // call both systems by iterating over DrakeSystemDoubleViews
   cout << endl << "Interate over DrakeSystemDoubleViews:" << endl;
   vector<DrakeSystemDoubleView> systems {&pendulum_cascade, &quad_cascade};
   vector<VectorXd> states {x, x_quad};

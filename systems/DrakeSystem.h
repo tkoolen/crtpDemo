@@ -6,7 +6,7 @@
 #define CRTPDEMO_DRAKESYSTEM
 
 #include <Eigen/Core>
-#include "Typedefs.h"
+#include "DrakeSystemTypedefs.h"
 
 template<typename Derived>
 class DrakeSystem

@@ -2,16 +2,16 @@
 // Created by Twan Koolen on 8/24/15.
 //
 
-#ifndef CRTPDEMO_MANIPULATOR_H
-#define CRTPDEMO_MANIPULATOR_H
+#ifndef CRTPDEMO_IntermediateTypeExample_H
+#define CRTPDEMO_IntermediateTypeExample_H
 
-#include "DrakeSystem.h"
+#include "systems/DrakeSystem.h"
 
 template<typename Derived>
-class Manipulator : public DrakeSystem<Derived>
+class IntermediateTypeExample : public DrakeSystem<Derived>
 {
 public:
-  Manipulator(Derived& derived, int num_continuous_states, int num_discrete_states, int num_inputs) :
+  IntermediateTypeExample(Derived& derived, int num_continuous_states, int num_discrete_states, int num_inputs) :
       DrakeSystem<Derived>(derived, num_continuous_states, num_discrete_states, num_inputs, num_continuous_states + num_discrete_states)
   { };
 
@@ -26,4 +26,4 @@ private:
   }
 };
 
-#endif //CRTPDEMO_MANIPULATOR_H
+#endif //CRTPDEMO_IntermediateTypeExample_H

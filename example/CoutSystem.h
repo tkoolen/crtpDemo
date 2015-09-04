@@ -5,7 +5,7 @@
 #ifndef CRTPDEMO_COUTSYSTEM_H
 #define CRTPDEMO_COUTSYSTEM_H
 
-#include "DrakeSystem.h"
+#include "systems/DrakeSystem.h"
 #include <iostream>
 
 class CoutSystem : public DrakeSystem<CoutSystem>
