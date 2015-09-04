@@ -11,7 +11,7 @@ class Pendulum : public IntermediateTypeExample<Pendulum>
 {
 public:
   Pendulum() :
-      IntermediateTypeExample<Pendulum>(*this, 2, 0, 1),
+      IntermediateTypeExample<Pendulum>(2, 0, 1),
       m(1.0), // kg
       l(.5),  // m
       b(0.1), // kg m^2 /s

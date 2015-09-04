@@ -11,8 +11,8 @@ template<typename Derived>
 class IntermediateTypeExample : public DrakeSystem<Derived>
 {
 public:
-  IntermediateTypeExample(Derived& derived, int num_continuous_states, int num_discrete_states, int num_inputs) :
-      DrakeSystem<Derived>(derived, num_continuous_states, num_discrete_states, num_inputs, num_continuous_states + num_discrete_states)
+  IntermediateTypeExample(int num_continuous_states, int num_discrete_states, int num_inputs) :
+      DrakeSystem<Derived>(num_continuous_states, num_discrete_states, num_inputs, num_continuous_states + num_discrete_states)
   { };
 
 

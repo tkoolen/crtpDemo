@@ -18,7 +18,7 @@ public:
   using Base::getNumContinuousStates;
 
   CascadeSystem(const DrakeSystem<Sys1>& sys1, const DrakeSystem<Sys2>& sys2) :
-      DrakeSystem<CascadeSystem>(*this, sys1.getNumContinuousStates() + sys2.getNumContinuousStates(), sys1.getNumDiscreteStates() + sys2.getNumDiscreteStates(), sys1.getNumInputs(), sys2.getNumOutputs()),
+      DrakeSystem<CascadeSystem>(sys1.getNumContinuousStates() + sys2.getNumContinuousStates(), sys1.getNumDiscreteStates() + sys2.getNumDiscreteStates(), sys1.getNumInputs(), sys2.getNumOutputs()),
   sys1(sys1), sys2(sys2){ };
 
 private:

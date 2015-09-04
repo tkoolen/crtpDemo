@@ -19,8 +19,8 @@ private:
   const size_t num_outputs;
 
 public:
-  DrakeSystem(Derived& derived, size_t num_continuous_states, size_t num_discrete_states, size_t num_inputs, size_t num_outputs) :
-      derived(derived),
+  DrakeSystem(size_t num_continuous_states, size_t num_discrete_states, size_t num_inputs, size_t num_outputs) :
+      derived(static_cast<Derived&>(*this)),
       num_continuous_states(num_continuous_states),
       num_discrete_states(num_discrete_states),
       num_inputs(num_inputs),

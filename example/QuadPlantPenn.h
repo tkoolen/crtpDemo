@@ -17,7 +17,7 @@ public:
   typedef DrakeSystem<QuadPlantPenn> Base;
   using Base::getNumStates;
 
-  QuadPlantPenn() : DrakeSystem<QuadPlantPenn>(*this, 12, 0, 4, 12) { };
+  QuadPlantPenn() : DrakeSystem<QuadPlantPenn>(12, 0, 4, 12) { };
 
 private:
   friend class DrakeSystem<QuadPlantPenn>;

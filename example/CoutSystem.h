@@ -11,7 +11,7 @@
 class CoutSystem : public DrakeSystem<CoutSystem>
 {
 public:
-  CoutSystem(int num_inputs) : DrakeSystem<CoutSystem>(*this, 0, 0, num_inputs, 0) {};
+  CoutSystem(int num_inputs) : DrakeSystem<CoutSystem>(0, 0, num_inputs, 0) {};
 
 private:
   friend class DrakeSystem<CoutSystem>;
