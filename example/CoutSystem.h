@@ -25,7 +25,7 @@ private:
 
   template<typename DerivedX>
   Eigen::Matrix<typename DerivedX::Scalar, Eigen::Dynamic, 1> output_impl(const Eigen::MatrixBase<DerivedX>& x) const {
-    return Eigen::Matrix<typename DerivedX::Scalar, Eigen::Dynamic, 1>(0);
+    return Eigen::Matrix<typename DerivedX::Scalar, Eigen::Dynamic, 1>::Zero(0);
   };
 };
 
