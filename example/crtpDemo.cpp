@@ -53,7 +53,7 @@ int main () {
 
   // call both systems by iterating over DrakeSystemDoubleViews
   cout << endl << "Interate over DrakeSystemDoubleViews:" << endl;
-  vector<DrakeSystemDoubleView> systems {&pendulum_cascade, &quad_cascade};
+  vector<DrakeSystemDoubleView> systems {pendulum_cascade, quad_cascade};
   vector<VectorXd> states {x, x_quad};
   vector<VectorXd> inputs {u, u_quad};
 
