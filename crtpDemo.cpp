@@ -2,11 +2,12 @@
 // Created by Twan Koolen on 8/24/15.
 //
 #include <iostream>
+#include <vector>
 #include "Pendulum.h"
+#include "QuadPlantPenn.h"
 #include "CoutSystem.h"
 #include "CascadeSystem.h"
-#include <unsupported/Eigen/AutoDiff>
-#include "drakeGradientUtil.h"
+#include "DrakeSystemDoubleView.h"
 
 using namespace Eigen;
 using namespace std;
@@ -35,10 +36,30 @@ int main () {
   auto xdot_taylor = p.dynamics(t, x_taylor, u_taylor);
   std::cout << "gradient:\n" << autoDiffToGradientMatrix(xdot_taylor) << std::endl;
 
+  // Cascade system
   cout << endl << "Cascade system output:" << endl;
   CoutSystem out(p.getNumOutputs());
-  CascadeSystem<Pendulum, CoutSystem> cascade(p, out);
-  cascade.dynamics(t, x, u);
+  CascadeSystem<Pendulum, CoutSystem> pendulum_cascade(p, out);
+  pendulum_cascade.dynamics(t, x, u);
+
+  // quad
+  cout << endl << "Quad system output:" << endl;
+  QuadPlantPenn quad;
+  auto x_quad = VectorXd::Random(quad.getNumStates()).eval();
+  auto u_quad = VectorXd::Random(quad.getNumInputs()).eval();
+  CoutSystem quad_out(quad.getNumOutputs());
+  CascadeSystem<QuadPlantPenn, CoutSystem> quad_cascade(quad, quad_out);
+  quad_cascade.dynamics(t, x_quad, u_quad);
+
+  // call both systems by iterating over vector of function pointers
+  cout << endl << "Interate over DrakeSystemDoubleViews:" << endl;
+  vector<DrakeSystemDoubleView> systems {&pendulum_cascade, &quad_cascade};
+  vector<VectorXd> states {x, x_quad};
+  vector<VectorXd> inputs {u, u_quad};
+
+  for (int i = 0; i < systems.size(); ++i) {
+    cout << systems[i].dynamics(t, states[i], inputs[i]) << endl << endl;
+  }
 
   return 0;
 }

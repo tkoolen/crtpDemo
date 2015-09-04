@@ -8,3 +8,7 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 add_executable(crtpDemo crtpDemo.cpp)
+
+# workaround to get all headers in project
+FILE (GLOB_RECURSE clion_all_headers ${CMAKE_SOURCE_DIR}/*.h)
+ADD_CUSTOM_TARGET(all_clion SOURCES ${clion_all_headers})

@@ -30,6 +30,8 @@ public:
   XdotType<DerivedX> dynamics(double t, const Eigen::MatrixBase<DerivedX>& x, const Eigen::MatrixBase<DerivedU>& u) const
   {
     static_assert(DerivedX::ColsAtCompileTime == 1, "x must be a column vector");
+    int rows = x.rows();
+    int this_rows = getNumStates();
     assert(x.rows() == getNumStates());
     static_assert(DerivedU::ColsAtCompileTime == 1, "u must be a column vector");
     assert(u.rows() == num_inputs);

@@ -40,6 +40,11 @@ private:
 
     return xdot;
   }
+
+  template <typename DerivedX>
+  YType<DerivedX> output_impl(const Eigen::MatrixBase<DerivedX>& x) const {
+    return sys2.output(x.tail(sys2.getNumStates()));
+  }
 };
 
 
